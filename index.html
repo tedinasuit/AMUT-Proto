@@ -71,11 +71,27 @@
 <div id="imageContainer"></div>
 
 <script>
-    const images = [
+    const allImages = [
         { id: 1, url: 'image1.jpg', text: 'Text for Image 1' },
         { id: 2, url: 'image2.jpg', text: 'Text for Image 2' },
         { id: 3, url: 'image3.jpg', text: 'Text for Image 3' },
-        { id: 4, url: 'image4.jpg', text: 'Text for Image 4' }
+        { id: 4, url: 'image4.jpg', text: 'Text for Image 4' },
+        { id: 5, url: 'image5.jpg', text: 'Text for Image 5' },
+        { id: 6, url: 'image6.jpg', text: 'Text for Image 6' },
+        { id: 7, url: 'image7.jpg', text: 'Text for Image 7' },
+        { id: 8, url: 'image8.jpg', text: 'Text for Image 8' },
+        { id: 9, url: 'image9.jpg', text: 'Text for Image 9' },
+        { id: 10, url: 'image10.jpg', text: 'Text for Image 10' },
+        { id: 11, url: 'image11.jpg', text: 'Text for Image 11' },
+        { id: 12, url: 'image12.jpg', text: 'Text for Image 12' },
+        { id: 13, url: 'image13.jpg', text: 'Text for Image 13' },
+        { id: 14, url: 'image14.jpg', text: 'Text for Image 14' },
+        { id: 15, url: 'image15.jpg', text: 'Text for Image 15' },
+        { id: 16, url: 'image16.jpg', text: 'Text for Image 16' },
+        { id: 17, url: 'image17.jpg', text: 'Text for Image 17' },
+        { id: 18, url: 'image18.jpg', text: 'Text for Image 18' },
+        { id: 19, url: 'image19.jpg', text: 'Text for Image 19' },
+        { id: 20, url: 'image20.jpg', text: 'Text for Image 20' },
     ];
 
     let intervalId;
@@ -87,13 +103,19 @@
         }
     }
 
+    function getRandomImages(allImages, numImages) {
+        const shuffledImages = [...allImages];
+        shuffleArray(shuffledImages);
+        return shuffledImages.slice(0, numImages);
+    }
+
     function displayImages() {
         const container = document.getElementById('imageContainer');
         container.innerHTML = '';
 
-        shuffleArray(images);
+        const selectedImages = getRandomImages(allImages, 4);
 
-        images.forEach(image => {
+        selectedImages.forEach(image => {
             const imgElement = document.createElement('img');
             imgElement.src = image.url;
             imgElement.alt = `Image ${image.id}`;
