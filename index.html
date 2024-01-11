@@ -3,21 +3,44 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Random Image Viewer</title>
+    <title>AMUT prototype</title>
     <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #333;
+            padding: 15px;
+            color: white;
+            font-size: 24px;
+        }
+
         #imageContainer {
             display: flex;
             justify-content: space-around;
             margin: 20px;
+            flex-wrap: wrap;
         }
 
         img {
             width: 150px;
             height: 150px;
+            margin: 10px;
             cursor: pointer;
+            border-radius: 10px;
+            transition: transform 0.3s ease-in-out;
         }
 
-        #startButton, #stopButton {
+        img:hover {
+            transform: scale(1.1);
+        }
+
+        button {
             padding: 10px;
             font-size: 16px;
             margin: 10px;
@@ -32,7 +55,7 @@
             color: white;
         }
 
-        #stopButton {
+        #resetButton {
             background-color: indianred;
             color: white;
         }
@@ -40,8 +63,10 @@
 </head>
 <body>
 
-<button id="startButton" onclick="start()">Start</button>
-<button id="stopButton" onclick="stop()" disabled>Stop</button>
+<header>Random Image Viewer</header>
+
+<button id="startButton" onclick="toggleDisplay()">Start</button>
+<button id="resetButton" onclick="reset()" disabled>Reset</button>
 
 <div id="imageContainer"></div>
 
@@ -72,27 +97,38 @@
             const imgElement = document.createElement('img');
             imgElement.src = image.url;
             imgElement.alt = `Image ${image.id}`;
+            imgElement.title = image.text;
             imgElement.addEventListener('click', () => displayText(image.text));
             container.appendChild(imgElement);
         });
     }
 
     function displayText(text) {
-        console.log(text);
+        alert(text);
+    }
+
+    function toggleDisplay() {
+        start();
+        stop();
     }
 
     function start() {
         displayImages();
         intervalId = setInterval(displayImages, 5000); // Change the interval as needed (currently set to 5 seconds)
-        document.getElementById('startButton').disabled = true;
-        document.getElementById('stopButton').disabled = false;
+        document.getElementById('startButton').innerText = 'Stop';
+        document.getElementById('resetButton').disabled = false;
     }
 
     function stop() {
         clearInterval(intervalId);
+        intervalId = null;
+        document.getElementById('startButton').innerText = 'Start';
+    }
+
+    function reset() {
+        stop();
         document.getElementById('imageContainer').innerHTML = '';
-        document.getElementById('startButton').disabled = false;
-        document.getElementById('stopButton').disabled = true;
+        document.getElementById('resetButton').disabled = true;
     }
 </script>
 
