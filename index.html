@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random Image Viewer</title>
+    <style>
+        #imageContainer {
+            display: flex;
+            justify-content: space-around;
+            margin: 20px;
+        }
+
+        img {
+            width: 150px;
+            height: 150px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+<div id="imageContainer"></div>
+
+<script>
+    // Array of image URLs and corresponding text
+    const images = [
+        { id: 1, url: 'image1.jpg', text: 'Text for Image 1' },
+        { id: 2, url: 'image2.jpg', text: 'Text for Image 2' },
+        { id: 3, url: 'image3.jpg', text: 'Text for Image 3' },
+        { id: 4, url: 'image4.jpg', text: 'Text for Image 4' }
+    ];
+
+    // Shuffle function to randomize the order of images
+    function shuffleArray(array) {
+        for (let i = array.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [array[i], array[j]] = [array[j], array[i]];
+        }
+    }
+
+    // Function to display images
+    function displayImages() {
+        const container = document.getElementById('imageContainer');
+        container.innerHTML = '';
+
+        shuffleArray(images);
+
+        images.forEach(image => {
+            const imgElement = document.createElement('img');
+            imgElement.src = image.url;
+            imgElement.alt = `Image ${image.id}`;
+            imgElement.addEventListener('click', () => displayText(image.text));
+            container.appendChild(imgElement);
+        });
+    }
+
+    // Function to display text in the console
+    function displayText(text) {
+        console.log(text);
+    }
+
+    // Initial display
+    displayImages();
+</script>
+
+</body>
+</html>
