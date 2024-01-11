@@ -16,14 +16,36 @@
             height: 150px;
             cursor: pointer;
         }
+
+        #startButton, #stopButton {
+            padding: 10px;
+            font-size: 16px;
+            margin: 10px;
+            cursor: pointer;
+            border: none;
+            border-radius: 10px;
+            outline: none;
+        }
+
+        #startButton {
+            background-color: dodgerblue;
+            color: white;
+        }
+
+        #stopButton {
+            background-color: indianred;
+            color: white;
+        }
     </style>
 </head>
 <body>
 
+<button id="startButton" onclick="start()">Start</button>
+<button id="stopButton" onclick="stop()" disabled>Stop</button>
+
 <div id="imageContainer"></div>
 
 <script>
-    // Array of image URLs and corresponding text
     const images = [
         { id: 1, url: 'image1.jpg', text: 'Text for Image 1' },
         { id: 2, url: 'image2.jpg', text: 'Text for Image 2' },
@@ -31,7 +53,8 @@
         { id: 4, url: 'image4.jpg', text: 'Text for Image 4' }
     ];
 
-    // Shuffle function to randomize the order of images
+    let intervalId;
+
     function shuffleArray(array) {
         for (let i = array.length - 1; i > 0; i--) {
             const j = Math.floor(Math.random() * (i + 1));
@@ -39,7 +62,6 @@
         }
     }
 
-    // Function to display images
     function displayImages() {
         const container = document.getElementById('imageContainer');
         container.innerHTML = '';
@@ -55,13 +77,23 @@
         });
     }
 
-    // Function to display text in the console
     function displayText(text) {
         console.log(text);
     }
 
-    // Initial display
-    displayImages();
+    function start() {
+        displayImages();
+        intervalId = setInterval(displayImages, 5000); // Change the interval as needed (currently set to 5 seconds)
+        document.getElementById('startButton').disabled = true;
+        document.getElementById('stopButton').disabled = false;
+    }
+
+    function stop() {
+        clearInterval(intervalId);
+        document.getElementById('imageContainer').innerHTML = '';
+        document.getElementById('startButton').disabled = false;
+        document.getElementById('stopButton').disabled = true;
+    }
 </script>
 
 </body>
