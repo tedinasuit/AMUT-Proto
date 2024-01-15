@@ -109,6 +109,26 @@
         return shuffledImages.slice(0, numImages);
     }
 
+    function displayTextAndRunPython(text) {
+        // Send the selected text to the server
+        fetch('http://127.0.0.1:5000/add_prompt', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ prompt: text }),
+        })
+        .then(response => response.json())
+        .then(data => {
+            console.log('Prompt added:', data);
+            // Run the Python script immediately
+            fetch('http://127.0.0.1:5000/run_script');
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
+    }
+
     function displayImages() {
         const container = document.getElementById('imageContainer');
         container.innerHTML = '';
@@ -120,13 +140,11 @@
             imgElement.src = image.url;
             imgElement.alt = `Image ${image.id}`;
             imgElement.title = image.text;
-            imgElement.addEventListener('click', () => displayText(image.text));
+            imgElement.addEventListener('click', () => {
+                displayTextAndRunPython(image.text);
+            });
             container.appendChild(imgElement);
         });
-    }
-
-    function displayText(text) {
-        alert(text);
     }
 
     function toggleDisplay() {

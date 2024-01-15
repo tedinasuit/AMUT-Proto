@@ -33,7 +33,7 @@ for index, prompt_text in enumerate(prompt_list):
     file_prefix = prompt_text[:100]
 
     # Update the filename prefix in the SaveImage node
-    prompt_workflow["25"]["inputs"]["filename_prefix"] = file_prefix
+    prompt_workflow["27"]["inputs"]["filename_prefix"] = file_prefix
 
     # Everything set, add the entire workflow to the queue
     queue_prompt(prompt_workflow)
