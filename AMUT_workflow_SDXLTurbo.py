@@ -22,6 +22,8 @@ prompt_list = [
     "and one more prompt"
 ]
 
+save_image_node = prompt_workflow["27"]
+
 # Update the prompt in the workflow and queue it
 for index, prompt_text in enumerate(prompt_list):
     # Set the text prompt for positive CLIPTextEncode node
