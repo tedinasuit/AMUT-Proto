@@ -20,10 +20,11 @@
 
 <div id="newestImageContainer">
     <h2>New Iteration</h2>
-    <img id="newestImage" src="">
+    <img id="reloadImage" src="ComfyUI_windows_portable/ComfyUI/output/amut_00001_.png">
 </div>
 
 <script>
+    let index = 0;  // Initialize the index variable
 
     const allImages = [
     { id: 1, url: 'media/Enchanted forest at dusk_00001_.png', text: 'Enchanted forest at dusk' },
@@ -47,7 +48,16 @@
     { id: 19, url: 'media/Alien tea party_00001_.png', text: 'Alien tea party' },
     { id: 20, url: 'media/Bioluminescent cave exploration_00001_.png', text: 'Bioluminescent cave exploration' }
 ];
+function reloadImage() {
+        var imageElement = document.getElementById('reloadImage');
+        imageElement.src = "ComfyUI_windows_portable/ComfyUI/output/amut_00001_.png?" + new Date().getTime();
 
+        // Call the function again after 1000 milliseconds (1 second)
+        setTimeout(reloadImage, 1000);
+    }
+
+    // Start the initial call to the function
+    reloadImage();
 
     let intervalId;
 
@@ -100,8 +110,7 @@
                 displayTextAndRunPython(image.text);
 
                 // Display the newest image after 2 seconds
-            setTimeout(() => {
-                index += 1;  // Increment the index for the newest image
+                setTimeout(() => {
                 displayNewestImage();
             }, 2000);
             });
@@ -127,6 +136,7 @@
         clearInterval(intervalId);
         intervalId = null;
         document.getElementById('startButton').innerText = 'Start';
+        reloadImage();
     }
 
     function reset() {
@@ -136,7 +146,8 @@
     stop();
     document.getElementById('imageContainer').innerHTML = '';
     document.getElementById('resetButton').disabled = true;
-}
+    reloadImage();
+    }
 
     function deleteFiles() {
     // Send a request to the server to delete files
@@ -155,7 +166,7 @@
     });
 }
 
-    async function displayNewestImage() {
+    function displayNewestImage() {
         // Construct the URL for the newest image
         const newestImageURL = `ComfyUI_windows_portable/ComfyUI/output/amut_00001_.png`;  // Assuming PNG format
         const newestImage = document.getElementById('newestImage');
