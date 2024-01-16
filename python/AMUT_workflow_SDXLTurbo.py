@@ -1,6 +1,10 @@
 import json
-from urllib import request
 import sys
+import random
+from urllib import request
+import datetime
+from PIL import Image
+import numpy as np
 
 # This function sends a prompt workflow to the specified URL 
 # (http://127.0.0.1:8188/prompt) and queues it on the ComfyUI server
@@ -23,11 +27,11 @@ save_image_node = prompt_workflow["27"]
 # Set the text prompt for positive CLIPTextEncode node
 prompt_workflow["6"]["inputs"]["text"] = "Porsche poster," + prompt_text
 
-# Set filename prefix to be the same as prompt (truncate to first 100 chars if necessary)
-file_prefix = prompt_text[:100]
+# Set a fixed filename prefix for all images (e.g., "amut")
+fixed_filename_prefix = "amut"
 
 # Update the filename prefix in the SaveImage node
-prompt_workflow["27"]["inputs"]["filename_prefix"] = file_prefix
+prompt_workflow["27"]["inputs"]["filename_prefix"] = fixed_filename_prefix
 
 # Everything set, add the entire workflow to the queue
 queue_prompt(prompt_workflow)

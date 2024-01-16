@@ -4,73 +4,27 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AMUT prototype</title>
-    <style>
-        body {
-            font-family: 'Arial', sans-serif;
-            text-align: center;
-            background-color: #f4f4f4;
-            margin: 0;
-            padding: 0;
-        }
-
-        header {
-            background-color: #333;
-            padding: 15px;
-            color: white;
-            font-size: 24px;
-        }
-
-        #imageContainer {
-            display: flex;
-            justify-content: space-around;
-            margin: 20px;
-            flex-wrap: wrap;
-        }
-
-        img {
-            width: 350px;
-            height: 350px;
-            margin: 10px;
-            cursor: pointer;
-            border-radius: 10px;
-            transition: transform 0.3s ease-in-out;
-        }
-
-        img:hover {
-            transform: scale(1.1);
-        }
-
-        button {
-            padding: 10px;
-            font-size: 16px;
-            margin: 10px;
-            cursor: pointer;
-            border: none;
-            border-radius: 10px;
-            outline: none;
-        }
-
-        #startButton {
-            background-color: dodgerblue;
-            color: white;
-        }
-
-        #resetButton {
-            background-color: indianred;
-            color: white;
-        }
-    </style>
+    <link rel="stylesheet" href="style/index.css">
 </head>
 <body>
 
-<header>AMUT prototype</header>
-
+<header>
+    AMUT prototype <br>
 <button id="startButton" onclick="toggleDisplay()">Start</button>
 <button id="resetButton" onclick="reset()" disabled>Reset</button>
+</header>
+
+
 
 <div id="imageContainer"></div>
 
+<div id="newestImageContainer">
+    <h2>New Iteration</h2>
+    <img id="newestImage" src="">
+</div>
+
 <script>
+
     const allImages = [
     { id: 1, url: 'media/Enchanted forest at dusk_00001_.png', text: 'Enchanted forest at dusk' },
     { id: 2, url: 'media/Galactic cityscape skyline_00001_.png', text: 'Galactic cityscape skyline' },
@@ -142,7 +96,14 @@
             imgElement.alt = `Image ${image.id}`;
             imgElement.title = image.text;
             imgElement.addEventListener('click', () => {
+                deleteFiles();
                 displayTextAndRunPython(image.text);
+
+                // Display the newest image after 2 seconds
+            setTimeout(() => {
+                index += 1;  // Increment the index for the newest image
+                displayNewestImage();
+            }, 2000);
             });
             container.appendChild(imgElement);
         });
@@ -154,6 +115,7 @@
     }
 
     function start() {
+        deleteFiles();
         displayImages();
         intervalId = setInterval(displayImages, 5000); // Change the interval as needed (currently set to 5 seconds)
         document.getElementById('startButton').innerText = 'Stop';
@@ -161,15 +123,43 @@
     }
 
     function stop() {
+
         clearInterval(intervalId);
         intervalId = null;
         document.getElementById('startButton').innerText = 'Start';
     }
 
     function reset() {
-        stop();
-        document.getElementById('imageContainer').innerHTML = '';
-        document.getElementById('resetButton').disabled = true;
+    // Delete files before resetting
+    deleteFiles();
+
+    stop();
+    document.getElementById('imageContainer').innerHTML = '';
+    document.getElementById('resetButton').disabled = true;
+}
+
+    function deleteFiles() {
+    // Send a request to the server to delete files
+    fetch('http://127.0.0.1:5000/delete_files', {
+        method: 'POST',
+    })
+    .then(response => response.json())
+    .then(data => {
+        console.log('Files deleted:', data);
+        // Reset the index and display the newest image
+        index = 0;
+        displayNewestImage();
+    })
+    .catch(error => {
+        console.error('Error:', error);
+    });
+}
+
+    async function displayNewestImage() {
+        // Construct the URL for the newest image
+        const newestImageURL = `ComfyUI_windows_portable/ComfyUI/output/amut_00001_.png`;  // Assuming PNG format
+        const newestImage = document.getElementById('newestImage');
+        newestImage.src = newestImageURL;
     }
 </script>
 
