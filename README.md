@@ -16,18 +16,21 @@ AMUT requires an Nvidia RTX series GPU. Older Nvidia GPUs from the GTX series wo
 
 To run the prototype, follow these steps:
 
-1. **Download ComfyUI:**
+1. **Download the latest AMUT-Proto release:**
+   - Donwload the [latest AMUT Prototype release here.](https://github.com/tedinasuit/AMUT-Proto/releases/tag/Latest)
+
+3. **Download ComfyUI:**
    - Download the ComfyUI repository from [here](https://github.com/comfyanonymous/ComfyUI/releases/tag/latest).
 
-2. **Place ComfyUI in the AMUT-Proto folder:**
+4. **Place ComfyUI in the AMUT-Proto folder:**
    - Extract the ComfyUI repository.
    - Move the extracted `ComfyUI_windows_portable` folder into the `AMUT-Proto` folder.
 
-3. **Download SDXL Turbo Checkpoint:**
+5. **Download SDXL Turbo Checkpoint:**
    - Download the SDXL Turbo checkpoint file "sd_xl_turbo_1.0_fp16.safetensors" from [this link](https://huggingface.co/stabilityai/sdxl-turbo/blob/main/sd_xl_turbo_1.0_fp16.safetensors).
    - Place the downloaded checkpoint file in the `AMUT-Proto\ComfyUI_windows_portable\ComfyUI\models\checkpoints` folder.
 
-4. **Set Up Python Environment:**
+6. **Set Up Python Environment:**
    - Make sure you have Python installed on your system.
    - If you are not sure on whether you have it installed, [you can download it from the Microsoft Store here.](https://apps.microsoft.com/detail/9P7QFQMJRFP7?hl=en-us&gl=US)
 
