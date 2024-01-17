@@ -11,6 +11,7 @@ AMUT requires an Nvidia RTX series GPU. Older Nvidia GPUs from the GTX series wo
 - Minimum: RTX 2060
 - Recommended: RTX 3080
 - Optimal: RTX 4080
+  
 - Free space required: 15 GB
 
 ## Installation
