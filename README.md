@@ -29,10 +29,7 @@ To run the prototype, follow these steps:
 
 4. **Set Up Python Environment:**
    - Make sure you have Python installed on your system.
-   - Install the required Python packages by running:
-     ```bash
-     pip install -r requirements.txt
-     ```
+   - If you are not sure on whether you have it installed, [you can download it from the Microsoft Store here.](https://apps.microsoft.com/detail/9P7QFQMJRFP7?hl=en-us&gl=US)
 
 ## Usage (Nvidia GPU)
 
