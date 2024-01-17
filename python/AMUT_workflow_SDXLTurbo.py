@@ -25,7 +25,8 @@ prompt_text = sys.argv[1]
 save_image_node = prompt_workflow["27"]
 
 # Set the text prompt for positive CLIPTextEncode node
-prompt_workflow["6"]["inputs"]["text"] = "Porsche poster," + prompt_text
+prompt_workflow["6"]["inputs"]["text"] = prompt_text
+
 
 # Set a fixed filename prefix for all images (e.g., "amut")
 fixed_filename_prefix = "amut"

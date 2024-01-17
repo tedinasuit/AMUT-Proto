@@ -95,28 +95,29 @@ function reloadImage() {
     }
 
     function displayImages() {
-        const container = document.getElementById('imageContainer');
-        container.innerHTML = '';
+    const container = document.getElementById('imageContainer');
+    container.innerHTML = '';
 
-        const selectedImages = getRandomImages(allImages, 4);
+    const selectedImages = getRandomImages(allImages, 4);
 
-        selectedImages.forEach(image => {
-            const imgElement = document.createElement('img');
-            imgElement.src = image.url;
-            imgElement.alt = `Image ${image.id}`;
-            imgElement.title = image.text;
-            imgElement.addEventListener('click', () => {
-                deleteFiles();
-                displayTextAndRunPython(image.text);
+    selectedImages.forEach(image => {
+        const imgElement = document.createElement('img');
+        imgElement.src = image.url;
+        imgElement.alt = `Image ${image.id}`;
+        imgElement.title = image.text;
+        imgElement.addEventListener('click', () => {
+            deleteFiles();
+            const fullPrompt = 'Porsche poster, ' + image.text; // Prepend "Porsche poster, " to the prompt
+            displayTextAndRunPython(fullPrompt);
 
-                // Display the newest image after 2 seconds
-                setTimeout(() => {
+            // Display the newest image after 2 seconds
+            setTimeout(() => {
                 displayNewestImage();
             }, 2000);
-            });
-            container.appendChild(imgElement);
         });
-    }
+        container.appendChild(imgElement);
+    });
+}
 
     function toggleDisplay() {
         start();
