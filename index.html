@@ -10,7 +10,7 @@
 
 <header>
     AMUT prototype <br>
-    <input type="text" id="prefixInput" placeholder="Enter prefix">
+    <input type="text" id="prefixInput" placeholder="Porsche poster">
     <button onclick="setPrefix()">Set</button>
     <button id="startButton" onclick="toggleDisplay()">Start</button>
     <button id="resetButton" onclick="reset()" disabled>Reset</button>
@@ -27,7 +27,7 @@
 
 <script>
     let index = 0;  // Initialize the index variable
-    let prefix = "Porsche poster,"; // Default prefix
+    let prefix = "Porsche poster"; // Default prefix
 
     const allImages = [
     { id: 1, url: 'media/Enchanted forest at dusk_00001_.png', text: 'Enchanted forest at dusk' },
@@ -115,7 +115,7 @@ function reloadImage() {
             imgElement.title = image.text;
             imgElement.addEventListener('click', () => {
                 deleteFiles();
-                const fullPrompt = prefix + ' ' + image.text;
+                const fullPrompt = prefix + ', ' + image.text;
                 displayTextAndRunPython(fullPrompt);
 
                 // Display the newest image after 2 seconds
