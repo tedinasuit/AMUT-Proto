@@ -54,7 +54,3 @@ To run the prototype, follow these steps:
 ## Acknowledgments
 
 - This prototype utilizes ComfyUI and the SDXL Turbo model. Special thanks to the respective authors and contributors of these projects.
-
-## License
-
-This project is licensed under the [MIT License](LICENSE).
