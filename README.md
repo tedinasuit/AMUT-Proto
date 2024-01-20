@@ -19,7 +19,7 @@ AMUT requires an Nvidia RTX series GPU. Older Nvidia GPUs from the GTX series wo
 To run the prototype, follow these steps:
 
 1. **Download the latest AMUT-Proto release:**
-   - Donwload the [latest AMUT Prototype release here.](https://github.com/tedinasuit/AMUT-Proto/releases/tag/Latest)
+   - Download the [latest AMUT Prototype release here.](https://github.com/tedinasuit/AMUT-Proto/releases/tag/Latest)
 
 3. **Download ComfyUI:**
    - Download the ComfyUI repository from [here](https://github.com/comfyanonymous/ComfyUI/releases/tag/latest).
@@ -45,9 +45,13 @@ To run the prototype, follow these steps:
 2. **Access the Prototype:**
    - Use the "Start" button to begin generating images based on prompts.
    - Click on images to add prompts and see the newest generated image.
+  
+3. **Change the prompt-prefix**
+   - The prompt prefix is set on "Porsche poster" by default.
+   - Change the prompt prefix by typing in the text box and confirm it by pressing the "Set" button.
 
-3. **Reset and Clear Files:**
-   - Use the "Reset" button to stop image generation and clear the output folder.
+5. **Reset and Clear Files:**
+   - Use the "Reset" button to stop image generation.
 
 ![image](https://github.com/tedinasuit/AMUT-Proto/assets/73829267/f3e74094-6251-475d-9f4a-ef74d1e32727)
 
