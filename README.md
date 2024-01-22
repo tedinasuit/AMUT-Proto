@@ -53,7 +53,8 @@ To run the prototype, follow these steps:
 5. **Reset and Clear Files:**
    - Use the "Reset" button to stop image generation.
 
-![image](https://github.com/tedinasuit/AMUT-Proto/assets/73829267/f3e74094-6251-475d-9f4a-ef74d1e32727)
+![image](https://github.com/tedinasuit/AMUT-Proto/assets/73829267/31fee76d-7bec-4921-aed2-34eebdf5520a)
+
 
 
 ## Troubleshooting
