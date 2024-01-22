@@ -35,6 +35,9 @@ To run the prototype, follow these steps:
 6. **Set Up Python Environment:**
    - Make sure you have Python installed on your system.
    - If you are not sure on whether you have it installed, [you can download it from the Microsoft Store here.](https://apps.microsoft.com/detail/9P7QFQMJRFP7?hl=en-us&gl=US)
+  
+7. **Run 'Install_AMUT.bat' file**
+   - The file can be found in the root folder, called 'AMUT-Proto'.
 
 ## Usage (Nvidia GPU)
 
