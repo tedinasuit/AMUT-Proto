@@ -19,7 +19,7 @@ AMUT requires an Nvidia RTX series GPU. Older Nvidia GPUs from the GTX series wo
 To run the prototype, follow these steps:
 
 1. **Download the latest AMUT-Proto release:**
-   - Download the [latest AMUT Prototype release here.](https://github.com/tedinasuit/AMUT-Proto/releases))
+   - Download the [latest AMUT Prototype release here.](https://github.com/tedinasuit/AMUT-Proto/releases)
 
 3. **Download ComfyUI:**
    - Download the ComfyUI repository from [here](https://github.com/comfyanonymous/ComfyUI/releases/tag/latest).
